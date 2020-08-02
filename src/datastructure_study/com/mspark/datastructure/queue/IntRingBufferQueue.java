@@ -86,4 +86,14 @@ public class IntRingBufferQueue {
 	public boolean isFull() {
 		return num >= max;
 	}
+	
+	public int search(int x) {
+		for(int i = 0; i < num ; i++) {
+			int idx = (i+front) % max;
+			if(que[idx] == x) {
+				return i + 1;
+			}
+		}
+		return 0;
+	}
 }
