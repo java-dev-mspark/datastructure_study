@@ -1,5 +1,7 @@
 package datastructure_study.com.mspark.datastructure.recursion;
 
+import datastructure_study.com.mspark.datastructure.stack.IntStack;
+
 public class Recur {
 
 	public static void main(String[] args) {
@@ -32,6 +34,18 @@ public class Recur {
 			System.out.println(n);
 			recur2(n-1);
 		}
+	}
+	
+	private static void recur3(int n) {
+		if(n > 0) {
+			recur3(n-1);
+			recur3(n-2);
+			System.out.println(n);
+		}
+	}
+	
+	private static void non_recur3(int n) {
+		IntStack stack = new IntStack(n);
 	}
 	
 	/**

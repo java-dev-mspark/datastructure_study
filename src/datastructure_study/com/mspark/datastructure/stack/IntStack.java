@@ -13,7 +13,7 @@ public class IntStack {
 		public OverflowIntStackException(){}
 	}
 	
-	IntStack(int capacity){
+	public IntStack(int capacity){
 		this.max = capacity;
 		ptr = 0;
 		stk = new int[capacity];
