@@ -5,17 +5,17 @@ import datastructure_study.com.mspark.datastructure.stack.IntStack;
 public class Recur {
 
 	public static void main(String[] args) {
-//		recur(4);
-//		System.out.println("@@@@@@@@@@");
-//		remove_tail_recur(4);
-//		System.out.println("@@@@@@@@@@ recur2");
-//		recur2(4);
-//		System.out.println("@@@@@@@@@@ non_recur2");
-//		non_recur2(4);
+		recur(4);
+		System.out.println("@@@@@@@@@@");
+		remove_tail_recur(4);
+		System.out.println("@@@@@@@@@@ recur2");
+		recur2(4);
+		System.out.println("@@@@@@@@@@ non_recur2");
+		non_recur2(4);
 		System.out.println("@@@@@@@@@@ recur3");
-		recur3(4);
+		recur3(5);
 		System.out.println("@@@@@@@@@@ non_recur3");
-		non_recur3(4);
+		non_recur3(5);
 		
 	}
 	
@@ -47,6 +47,7 @@ public class Recur {
 		IntStack stack = new IntStack(n);
 		
 		while(true) {
+			
 			if(n > 1) {
 				stack.push(n);
 				n -= 2;
@@ -58,7 +59,7 @@ public class Recur {
 				n -= 1;
 				continue;
 			}
-			
+
 			if(!stack.isEmpty()) {
 				n = stack.pop();
 				System.out.println(n);
@@ -77,27 +78,43 @@ public class Recur {
 			System.out.println(n);
 		}
 	}
+	/**
+	 *  recur3 하향식 분석
+	 *  								3 2 "4"	
+	 *  				   2 1 "3"						1 0 "2"
+	 *  			1 0 "2"		0 -1 "1"		0 -1 "1"		-
+	 * 		0 -2 "1"	  -		 -			-	 -         -
+	 * 
+	 * 				1213124
+	 * 
+	 */
 	
 	private static void non_recur3(int n) {
 		IntStack stack = new IntStack(n);
-		
 		while(true) {
+			
 			if(n > 0) {
 				stack.push(n);
-				n -= 1;
+				n -=1;
 				continue;
 			}
 			
-			if(n > 1) {
-				stack.push(n);
-				n -= 2;
-				continue;
-			}
-
 			if(!stack.isEmpty()) {
 				n = stack.pop();
 				System.out.println(n);
-				n -= 1;
+				
+				if(stack.isEmpty()) {
+					break;
+				}
+
+				int next = stack.peek();
+				
+				if(next - n > 1) {
+					n -= next;
+				}else {
+					n -= 1;
+				}
+				
 				continue;
 			}
 			
