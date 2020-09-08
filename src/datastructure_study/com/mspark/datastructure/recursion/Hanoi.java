@@ -29,5 +29,9 @@ public class Hanoi {
 	 * 
 	 */
 	
+	private static void move2(int n, int x, int y) {
+		
+	}
+	
 	
 }
